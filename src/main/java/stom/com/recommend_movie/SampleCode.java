@@ -1,22 +1,41 @@
 package stom.com.recommend_movie;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
+import org.springframework.web.client.RestTemplate;
+import stom.com.recommend_movie.domain.dto.KmdbMovieDto;
+
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 영화 REST Api 샘플 코드
  * KLDb Api
+ *  B47C3DM0LF8H32J5ZQPF
  */
 public class SampleCode {
+    private static String SECRET_KEY = "B47C3DM0LF8H32J5ZQPF";
+    private static String BASE_URL = "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json.jsp";
+
     public static void main(String[] args) throws IOException {
-        StringBuilder urlBuilder = new StringBuilder("http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json.jsp?collection=kmdb_new&nation=대한민국"); /*URL*/
-        urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")+ "=서비스키"); /*Service Key*/
-        urlBuilder.append("&" + URLEncoder.encode("val001", "UTF-8") + "=" + URLEncoder.encode("2018", "UTF-8")); /*상영년도*/
-        urlBuilder.append("&" + URLEncoder.encode("val002", "UTF-8") + "=" + URLEncoder.encode("01", "UTF-8")); /*상영 월*/
+        RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
+
+        Map<String, String> param = new HashMap();
+        param.put("ServiceKey", SECRET_KEY);
+        String forObject = restTemplate.getForObject(BASE_URL, String.class, param);
+        System.out.println(forObject);
+
+
+        /*        StringBuilder urlBuilder = new StringBuilder("http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json.jsp?collection=kmdb_new&nation=대한민국"); *//*URL*//*
+        urlBuilder.append("?" + URLEncoder.encode("ServiceKey", "UTF-8")+ "=서비스키"); *//*Service Key*//*
+        urlBuilder.append("&" + URLEncoder.encode("val001", "UTF-8") + "=" + URLEncoder.encode("2018", "UTF-8")); *//*상영년도*//*
+        urlBuilder.append("&" + URLEncoder.encode("val002", "UTF-8") + "=" + URLEncoder.encode("01", "UTF-8")); *//*상영 월*//*
         URL url = new URL(urlBuilder.toString());
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setRequestMethod("GET");
@@ -35,6 +54,10 @@ public class SampleCode {
         }
         rd.close();
         conn.disconnect();
-        System.out.println(sb.toString());
+        System.out.println(sb.toString());*/
+
+
+
+
     }
 }
