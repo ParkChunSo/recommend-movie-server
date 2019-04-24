@@ -2,17 +2,14 @@ package stom.com.recommend_movie.controller;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.*;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import stom.com.recommend_movie.domain.dto.KmdbMovieDto;
+import stom.com.recommend_movie.batch.KmdbMovieDto;
+import stom.com.recommend_movie.batch.dto.MovieDto;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,7 +30,7 @@ public class MovieController {
     }
 
     @GetMapping("/test")
-    public KmdbMovieDto test() throws IOException {
+    public MovieDto test() throws IOException {
         String SECRET_KEY = "B47C3DM0LF8H32J5ZQPF";
         String BASE_URL = "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json.jsp";
         RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
@@ -53,7 +50,7 @@ public class MovieController {
 
         String forObject = restTemplate.getForObject(urlBuilder.toString(), String.class);
         objectMapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
-        KmdbMovieDto kmdbMovieDto = objectMapper.readValue(forObject, KmdbMovieDto.class);
+        MovieDto kmdbMovieDto = objectMapper.readValue(forObject, MovieDto.class);
         return kmdbMovieDto;
     }
 }
