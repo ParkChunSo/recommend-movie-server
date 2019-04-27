@@ -1,4 +1,4 @@
-package stom.com.recommend_movie.batch.dto;
+package stom.com.recommend_movie.domain.dto.open_api;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import stom.com.recommend_movie.batch.deserializer.DataDtoDeserializer;
+import stom.com.recommend_movie.batch.config.deserializer.DataDtoDeserializer;
 
 import java.util.ArrayList;
 import java.util.List;

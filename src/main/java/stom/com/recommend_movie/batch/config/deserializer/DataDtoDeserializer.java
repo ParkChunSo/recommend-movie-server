@@ -1,11 +1,11 @@
-package stom.com.recommend_movie.batch.deserializer;
+package stom.com.recommend_movie.batch.config.deserializer;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.*;
-import stom.com.recommend_movie.batch.dto.DataDto;
-import stom.com.recommend_movie.batch.dto.ResultDto;
+import stom.com.recommend_movie.domain.dto.open_api.DataDto;
+import stom.com.recommend_movie.domain.dto.open_api.ResultDto;
 
 import java.io.IOException;
 import java.util.ArrayList;

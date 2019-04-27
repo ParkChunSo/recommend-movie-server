@@ -1,4 +1,4 @@
-package stom.com.recommend_movie.batch.dto;
+package stom.com.recommend_movie.domain.dto.open_api;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;

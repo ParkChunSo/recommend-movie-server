@@ -1,4 +1,4 @@
-package stom.com.recommend_movie.batch.deserializer;
+package stom.com.recommend_movie.batch.config.deserializer;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -6,32 +6,32 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import stom.com.recommend_movie.batch.dto.VodDto;
+import stom.com.recommend_movie.domain.dto.open_api.ActorDto;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VodDtoDeserializer extends JsonDeserializer<List<VodDto>> {
+public class ActorDtoDeserializer extends JsonDeserializer<List<ActorDto>> {
     private final ObjectMapper objectMapper;
 
-    public VodDtoDeserializer() {
+    public ActorDtoDeserializer() {
         this.objectMapper = new ObjectMapper();
     }
 
     @Override
-    public List<VodDto> deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
+    public List<ActorDto> deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
         JsonNode node = objectMapper.readTree(jsonParser);
-        List<VodDto> vods = new ArrayList<>();
+        List<ActorDto> actors = new ArrayList<>();
         for(int i = 0 ; i < node.size(); i++) {
             JsonNode jsonNode = node.get(i);
-            vods.add(
-                    VodDto.builder()
-                            .vodClass(jsonNode.get("vodClass").asText())
-                            .vodUrl(jsonNode.get("vodUrl").asText())
+            actors.add(
+                    ActorDto.builder()
+                            .actorId(jsonNode.get("actorId").asText())
+                            .actorNm(jsonNode.get("actorNm").asText())
                             .build()
             );
         }
-        return vods;
+        return actors;
     }
 }
