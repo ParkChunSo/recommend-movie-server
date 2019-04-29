@@ -10,7 +10,7 @@ public class OpenApiConstants {
     public static final String RELEASE_START_DATE_PARAM="&releaseDts=";
     public static final String RELEASE_END_DATE_PARAM="&releaseDte=";
 
-    public static String getRequestReleaseDtsAndDte(String start, String end){
+    public static String setRequestReleaseDtsAndDte(String start, String end){
         StringBuilder sb = new StringBuilder(REQUEST_BASE_URL);
         sb.append(RELEASE_START_DATE_PARAM);
         sb.append(start);

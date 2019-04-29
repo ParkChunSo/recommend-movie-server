@@ -1,5 +1,6 @@
 package stom.com.recommend_movie.domain.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -39,7 +40,7 @@ public class Movie {
     private List<Actor> actors = new ArrayList<>();
 
     // Kmdb 연결정보
-    private String KmdbDataId;
+    private String kmdbDataId;
 
     // 제작국가
     private String nation;
@@ -78,4 +79,27 @@ public class Movie {
 
     // 누적 관람 인원
     private String audiAcc;
+
+    @Builder
+    public Movie(String movieId, String movieSeq, String korTitle, String engTitle, Director director, List<Actor> actors, String kmdbDataId, String nation, String company, int prodYear, int runtime, String plot, String rating, LocalDate releaseDate, List<Keywords> keywords, List<Genres> genres, String posterUrl, String vodUrl, String audiAcc) {
+        this.movieId = movieId;
+        this.movieSeq = movieSeq;
+        this.korTitle = korTitle;
+        this.engTitle = engTitle;
+        this.director = director;
+        this.actors = actors;
+        this.kmdbDataId = kmdbDataId;
+        this.nation = nation;
+        this.company = company;
+        this.prodYear = prodYear;
+        this.runtime = runtime;
+        this.plot = plot;
+        this.rating = rating;
+        this.releaseDate = releaseDate;
+        this.keywords = keywords;
+        this.genres = genres;
+        this.posterUrl = posterUrl;
+        this.vodUrl = vodUrl;
+        this.audiAcc = audiAcc;
+    }
 }

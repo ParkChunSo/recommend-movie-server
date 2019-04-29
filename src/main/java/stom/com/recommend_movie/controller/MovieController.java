@@ -46,7 +46,7 @@ public class MovieController {
         urlBuilder.append("&" + URLEncoder.encode("releaseDte", "UTF-8") + "=" + URLEncoder.encode("20180201", "UTF-8")); //*상영 월*//*
 
 //        String forObject = restTemplate.getForObject(urlBuilder.toString(), String.class);
-        String forObject = restTemplate.getForObject(OpenApiConstants.getRequestReleaseDtsAndDte("20180101", "20180201"), String.class);
+        String forObject = restTemplate.getForObject(OpenApiConstants.setRequestReleaseDtsAndDte("20180101", "20180201"), String.class);
         objectMapper.enable(DeserializationFeature.ACCEPT_SINGLE_VALUE_AS_ARRAY);
         MovieDto kmdbMovieDto = objectMapper.readValue(forObject, MovieDto.class);
         return kmdbMovieDto;
