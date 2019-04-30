@@ -1,6 +1,7 @@
 package stom.com.recommend_movie.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,8 +13,11 @@ import java.io.IOException;
 
 @RestController
 public class MovieController {
-//    @Autowired
+    @Autowired
     ObjectMapper objectMapper = new ObjectMapper();
+
+    @Autowired
+    RestTemplate restTemplate;
 
     @GetMapping("/list")
     public void getMovieList(){
@@ -27,7 +31,7 @@ public class MovieController {
 
     @GetMapping("/test")
     public String test() throws IOException {
-        RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
+//        RestTemplate restTemplate = new RestTemplate(new HttpComponentsClientHttpRequestFactory());
 //        restTemplate.setMessageConverters(Collections.singletonList(new MappingJackson2HttpMessageConverter()));
 //        String forObject = restTemplate.getForObject(urlBuilder.toString(), String.class);
         Object forObject = restTemplate.getForEntity(OpenApiConstants.setRequestReleaseDtsAndDte("20180101", "20180201"), MovieDto.class);
