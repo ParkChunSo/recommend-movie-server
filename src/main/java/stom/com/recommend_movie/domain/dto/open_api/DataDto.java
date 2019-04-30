@@ -2,6 +2,7 @@ package stom.com.recommend_movie.domain.dto.open_api;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.*;
 import stom.com.recommend_movie.batch.config.deserializer.ResultDtoDeserializer;
@@ -13,6 +14,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonRootName(value = "Data")
 public class DataDto {
     @JsonProperty("CollName")
     private String collName;

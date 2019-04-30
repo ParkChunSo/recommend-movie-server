@@ -2,6 +2,7 @@ package stom.com.recommend_movie.domain.dto.open_api;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -17,6 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonRootName(value = "Result")
 public class ResultDto {
     @JsonProperty("DOCID")
     private String docid;
@@ -72,4 +74,5 @@ public class ResultDto {
     private String modDate;
     private String isanCode;
     private String ALIAS;
+
 }

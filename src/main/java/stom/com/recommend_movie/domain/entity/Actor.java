@@ -18,6 +18,9 @@ public class Actor {
 
     private String actorName;
 
-    @ManyToMany(mappedBy = "actors")
-    private List<Movie> movies = new ArrayList<>();
+    @OneToMany(mappedBy = "actor")
+    private List<MovieAndActor> movieAndActors = new ArrayList<>();
+
+/*    @ManyToMany(mappedBy = "actors")
+    private List<Movie> movies = new ArrayList<>();*/
 }

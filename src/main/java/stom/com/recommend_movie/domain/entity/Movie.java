@@ -32,12 +32,8 @@ public class Movie {
     private Director director;
 
     // 배우 정보
-    @ManyToMany
-    @JoinTable(
-            name = "movie_actor_tbl",
-            joinColumns = @JoinColumn(name = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "actor_id"))
-    private List<Actor> actors = new ArrayList<>();
+    @OneToMany(mappedBy = "movie")
+    private List<MovieAndActor> movieAndActor;
 
     // Kmdb 연결정보
     private String kmdbDataId;
@@ -81,13 +77,13 @@ public class Movie {
     private String audiAcc;
 
     @Builder
-    public Movie(String movieId, String movieSeq, String korTitle, String engTitle, Director director, List<Actor> actors, String kmdbDataId, String nation, String company, int prodYear, int runtime, String plot, String rating, LocalDate releaseDate, List<Keywords> keywords, List<Genres> genres, String posterUrl, String vodUrl, String audiAcc) {
+    public Movie(String movieId, String movieSeq, String korTitle, String engTitle, Director director, List<MovieAndActor> movieAndActor, String kmdbDataId, String nation, String company, int prodYear, int runtime, String plot, String rating, LocalDate releaseDate, List<Keywords> keywords, List<Genres> genres, String posterUrl, String vodUrl, String audiAcc) {
         this.movieId = movieId;
         this.movieSeq = movieSeq;
         this.korTitle = korTitle;
         this.engTitle = engTitle;
         this.director = director;
-        this.actors = actors;
+        this.movieAndActor = movieAndActor;
         this.kmdbDataId = kmdbDataId;
         this.nation = nation;
         this.company = company;
@@ -103,3 +99,9 @@ public class Movie {
         this.audiAcc = audiAcc;
     }
 }
+/*    @ManyToMany
+    @JoinTable(
+            name = "movie_actor_tbl",
+            joinColumns = @JoinColumn(name = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "actor_id"))
+    private List<Actor> actors = new ArrayList<>();*/

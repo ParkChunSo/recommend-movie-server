@@ -9,8 +9,10 @@ public class MovieAndActor {
     private Long id;
 
     @ManyToOne
+    @JoinColumn(name = "movie_id")
     private Movie movie;
 
     @ManyToOne
+    @JoinColumn(name = "actor_id")
     private Actor actor;
 }

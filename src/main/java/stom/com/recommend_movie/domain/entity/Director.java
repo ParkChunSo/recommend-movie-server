@@ -1,5 +1,6 @@
 package stom.com.recommend_movie.domain.entity;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,4 +20,11 @@ public class Director {
 
     @OneToMany(mappedBy = "director")
     private List<Movie> movies;
+
+    @Builder
+    public Director(String directorId, String directorName, List<Movie> movies) {
+        this.directorId = directorId;
+        this.directorName = directorName;
+        this.movies = movies;
+    }
 }
